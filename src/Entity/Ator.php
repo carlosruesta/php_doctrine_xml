@@ -2,31 +2,40 @@
 
 namespace Alura\Doctrine\Entity;
 
-/**
- * @Entity
- * @Table(name="ator")
- */
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Ator
 {
-    /**
-     * @Id
-     * @GeneratedValue
-     * @Column(name="id_ator", type="integer")
-     */
     private $id;
-
-    /**
-     * @Column(name="primeiro_nome", type="string")
-     */
     private $primeiroNome;
-
-    /**
-     * @Column(name="ultimo_nome", type="string")
-     */
     private $ultimoNome;
-
-    /**
-     * @Column(name="data_atualizado", type="datetime")
-     */
     private $ultimaAtualizacao;
+    private $filmes;
+
+    public function __construct(
+        ?int $id,
+        string $primeiroNome,
+        string $ultimoNome
+    ) {
+        $this->id = $id;
+        $this->primeiroNome = $primeiroNome;
+        $this->ultimoNome = $ultimoNome;
+        $this->ultimaAtualizacao = new \DateTimeImmutable();
+        $this->filmes = new ArrayCollection();
+    }
+
+    public function addFilme(Filme $filme): void
+    {
+        if ($this->filmes->contains($filme)) {
+            return;
+        }
+
+        $this->filmes->add($filme);
+        $filme->addAtor($this);
+    }
+
+    public function getNome()
+    {
+        return $this->primeiroNome . " " . $this->ultimoNome;
+    }
 }

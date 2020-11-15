@@ -10,9 +10,11 @@ class EntityManagerCreator
 {
     public function criaEntityManager(): EntityManagerInterface
     {
-        $config = Setup::createAnnotationMetadataConfiguration(
-            [__DIR__ . '/../Entity']
-        );
+        $config = Setup::createXMLMetadataConfiguration(
+            [__DIR__."/../../mapeamentos"]);
+//        $config = Setup::createAnnotationMetadataConfiguration(
+//            [__DIR__ . '/../Entity']
+//        );
 
         $con = [
             'driver'    => 'pdo_pgsql',

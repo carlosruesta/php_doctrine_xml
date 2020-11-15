@@ -1,0 +1,29 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+	<entity name="Alura\Doctrine\Entity\Ator" table="ator">
+		<id name="id" column="id_ator" type="integer">
+			<generator strategy="IDENTITY"/>
+		</id>
+		<field name="primeiroNome" column="primeiro_nome" type="string" length="45"/>
+		<field name="ultimoNome" column="ultimo_nome" type="string" length="45"/>
+		<field name="ultimaAtualizacao" column="data_atualizado" type="datetime">
+			<options>
+				<option name="default">NOW()</option>
+			</options>
+		</field>
+
+		<many-to-many field="filmes" target-entity="Alura\Doctrine\Entity\Filme">
+			<cascade>
+				<cascade-persist />
+			</cascade>
+			<join-table name="ator_filme">
+				<join-columns>
+					<join-column name="id_ator" referenced-column-name="id_ator" />
+				</join-columns>
+				<inverse-join-columns>
+					<join-column name="id_filme" referenced-column-name="id_filme"/>
+				</inverse-join-columns>
+			</join-table>
+		</many-to-many>
+
+	</entity>
+</doctrine-mapping>
