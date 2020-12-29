@@ -1,5 +1,13 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
 	<entity name="Alura\Doctrine\Entity\Ator" table="ator">
+		<indexes>
+			<index columns="ultimo_nome" name="idx_ultimo_nome"></index>
+		</indexes>
+
+		<unique-constraints>
+			<unique-constraint columns="primeiro_nome,ultimo_nome" name="idx_nome_completo_unique"></unique-constraint>
+		</unique-constraints>
+
 		<id name="id" column="id_ator" type="integer">
 			<generator strategy="IDENTITY"/>
 		</id>

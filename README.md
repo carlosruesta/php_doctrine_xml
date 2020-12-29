@@ -59,6 +59,14 @@
     vendor\bin\doctrine orm:convert-mapping --from-database --namespace Alura\Doctrine\Entity xml mapeamentos
     
     + Gerando mapeamento em anotacao
-    vendor\bin\doctrine orm:convert-mapping --from-database --namespace Alura\Doctrine\Entity annotation src\Entity
-     
+    vendor\bin\doctrine orm:convert-mapping --from-database --namespace Alura\Doctrine\Entity annotation src\Entity 
     
+# Curso parte 2 de Doctrine ORM: 
+## Use índices, SQL nativo, funções e stored procedures
+
+### Aula 01: Mapeando índices no Doctrine
+
+* Como mapear índices utilizando o Doctrine, através da tag <indexes>
+* Que o Doctrine trata os índices UNIQUE de forma diferente, mapeando-os com a tag <unique-constraints>
+* Usamos para verificar mudanças   
+    ./vendor/bin/doctrine orm:schema-tool:create --dump-sql

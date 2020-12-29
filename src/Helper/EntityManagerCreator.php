@@ -19,7 +19,7 @@ class EntityManagerCreator
         $con = [
             'driver'    => 'pdo_pgsql',
             'host'      => 'localhost',
-            'dbname'    => 'alura_filmes',
+            'dbname'    => 'alura_filmes_novo',
             'user'      => 'postgres',
             'password'  => '123456'
         ];
