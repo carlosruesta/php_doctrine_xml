@@ -70,3 +70,30 @@
 * Que o Doctrine trata os índices UNIQUE de forma diferente, mapeando-os com a tag <unique-constraints>
 * Usamos para verificar mudanças   
     ./vendor/bin/doctrine orm:schema-tool:create --dump-sql
+    
+### Aula 02: Definindo tipos personalizados
+
++ Para que a gente consiga utilizar um tipo personalizado, ele precisa existir no banco de dados.
++ Doctrine não cria esse tipo automaticamente, então o tipo personalizo será criado direto no banco:
+    CREATE TYPE CLASSIFICACAO AS ENUM ('G', 'PG', 'PG-13', 'R', 'NC-17');
+    
++ No momento de criar a conexão com o banco de dados preciso informar que será usado um tipo personalizado
+    + Preciso informar ao Doctrine que será adicionado um tipo personalizado e qual classe PHP que tratará com ele
+        + Type::addType(string_nome_do_tipo, classe_php_do_tipo)
+        + Type::addType('classificacao', TipoClassificacao::class)
+    + Também é necessário pedir para o Doctrine realizar o mapeamento:
+        + $em->getConnection()->getDatabasePlatform()->registerDoctrineTypeMapping('CLASSIFICACAO', 'classificacao');
+        
++ No PHP Será necessário criar uma classe TipoClassificacao que será a responsável por realizar o mapeamento
+    entre os valores do PHP e os valores do Banco de dados;
+    + A classe extende a classe Doctrine\DBAL\Types\Type;
+    + Nessa classe poderia se instanciar classes que tratariam cada valor (MUITO INTERESSANTE)
+    + No caso do exemplo da aula será somente devolvido o valor correspondente
+    + O mapeamento realizado é bidirecional: PHP -> Banco (Salvar dados) e Banco -> PHP (Leitura)
+    + PHP -> Banco (Salvar dados)   -> convertToPHPValue
+    + Banco -> PHP (Leitura)        -> convertToDatabaseValue
+
++ Precisa também definir o campo e o tipo corretamente no XML de mapeamento (ou na classe se for por anotação);
+
++ No PHP precisarei alterar a classe Filme mapeando o novo campo classificação e permitindo a inserção de valores
+

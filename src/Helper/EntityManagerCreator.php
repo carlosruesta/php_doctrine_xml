@@ -2,6 +2,8 @@
 
 namespace Alura\Doctrine\Helper;
 
+use Alura\Doctrine\Types\TipoClassificacao;
+use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Setup;
@@ -24,7 +26,14 @@ class EntityManagerCreator
             'password'  => '123456'
         ];
 
+        Type::addType('classificacao', TipoClassificacao::class);
+
         $em = EntityManager::create($con, $config);
+
+        $em->getConnection()
+            ->getDatabasePlatform()
+            ->registerDoctrineTypeMapping('CLASSIFICACAO', 'classificacao');
+
         return $em;
     }
 }

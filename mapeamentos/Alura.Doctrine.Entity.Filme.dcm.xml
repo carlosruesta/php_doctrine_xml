@@ -14,6 +14,15 @@
                 <option name="default">NOW()</option>
             </options>
         </field>
+<!--        <field name="classificacao" column-definition="CLASSIFICACAO DEFAULT 'G'"/>-->
+        <field  name="classificacao"
+                column="classificacao"
+                type="classificacao">
+            <options>
+                <option name="default">G</option>
+            </options>/>
+        </field>
+
 
         <many-to-many field="atores"
                       target-entity="Alura\Doctrine\Entity\Ator"
