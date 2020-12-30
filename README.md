@@ -97,3 +97,19 @@
 
 + No PHP precisarei alterar a classe Filme mapeando o novo campo classificação e permitindo a inserção de valores
 
++ No caso no mapeamento no XML evitamos o column definition
+    <field name="classificacao" column-definition="CLASSIFICACAO DEFAULT 'G'"/>-->
+    + Evitamos isso porque a classificação chegaria no PHP como uma string, que pode não ter muito significado para o negócio.
+    
+    + Ao definir os  Doctrine Types e a classe de definicao de tipo personalizado no PHP, o Doctrine vai mapear para nós 
+      esta string para classes relevantes do domínio.
+    
+          <field name="classificacao"
+              column="classificacao"
+              type="classificacao">
+              <options>
+              <option name="default">G</option>
+              </options>
+          </field>
+          
++ 

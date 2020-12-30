@@ -7,7 +7,6 @@
         <field name="titulo" type="string" />
         <field name="sinopse" type="text" nullable="true"/>
         <field name="anoLancamento" column="ano_lancamento" length="4" nullable="true"/>
-
         <field name="ultimaAtualizacao"
                column="data_atualizado"
                type="datetime">
@@ -15,6 +14,8 @@
                 <option name="default">NOW()</option>
             </options>
         </field>
+
+<!--        <field name="classificacao" column-definition="CLASSIFICACAO DEFAULT 'G'"/>-->
 
         <field name="classificacao"
                column="classificacao"
