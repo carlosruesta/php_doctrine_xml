@@ -11,14 +11,6 @@
 		<id name="id" column="id_ator" type="integer">
 			<generator strategy="IDENTITY"/>
 		</id>
-		<field name="primeiroNome" column="primeiro_nome" type="string" length="45"/>
-		<field name="ultimoNome" column="ultimo_nome" type="string" length="45"/>
-		<field name="ultimaAtualizacao" column="data_atualizado" type="datetime">
-			<options>
-				<option name="default">NOW()</option>
-			</options>
-		</field>
-
 		<many-to-many field="filmes" target-entity="Alura\Doctrine\Entity\Filme">
 			<cascade>
 				<cascade-persist />

@@ -121,4 +121,13 @@
     + Criar o Enum: ClassificacaoEnum.php
     + A classe filme obrigar a receber no construtor o tipo ClassificacaoEnum
     + Na definição do TipoClassificacao foi tratado para o Doctrine ao momento de mapear já entregar e ler um Enum;
-       
+      
+### Aula 03 - Mapeando a herança
+
++ Objetivo Mapear herança usando Doctrine. Para isso:
+    + Adicionamos a superclasse Pessoa
+    + Adicionamos o mapeamento de uma superclasse Pessoa para o Doctrine
+    + Adicionamos o mapeamento da classe filha Cliente
+    + Alteramos o mapeamento da classe filha Ator
+    + Adicionamos a classe Cliente filha da classe Pessoa
+    + Alteramos a classe Ator para ser filha da classe Pessoa
