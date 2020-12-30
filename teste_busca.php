@@ -12,6 +12,7 @@ $filmes = $em->getRepository(Filme::class)->findAll();
 foreach ($filmes as $filme) {
     echo $filme->getTitulo() . PHP_EOL . 'Idioma: ' . $filme->getIdiomaAudio();
     echo PHP_EOL;
+    echo "Classificação: {$filme->getClassificacao()}";
     echo PHP_EOL;
     echo implode(', ', $filme->getAtores());
     echo PHP_EOL;

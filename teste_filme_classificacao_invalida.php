@@ -2,6 +2,7 @@
 
 use Alura\Doctrine\Entity\Filme;
 use Alura\Doctrine\Entity\Idioma;
+use Alura\Doctrine\Enum\ClassificacaoEnum;
 
 require_once 'vendor/autoload.php';
 
@@ -11,7 +12,7 @@ try {
     $portugues = new Idioma(null, 'Português');
     $alemao = new Idioma(null, 'Alemão');
 
-    $filme1 = new Filme(null, 'A volta dos que não foram', $portugues, $alemao, '2019', null, 'qG');
+    $filme1 = new Filme(null, 'A volta dos que não foram', $portugues, $alemao, '2019', null, ClassificacaoEnum::LIVRE());
 
 
     $em->persist($filme1);

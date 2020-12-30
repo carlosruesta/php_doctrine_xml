@@ -2,6 +2,7 @@
 
 namespace Alura\Doctrine\Entity;
 
+use Alura\Doctrine\Enum\ClassificacaoEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Filme
@@ -23,7 +24,7 @@ class Filme
         Idioma $idiomaOriginal,
         ?string $anoLancamento = null,
         ?string $sinopse = null,
-        string $classificacao = null
+        ClassificacaoEnum $classificacao = null
     ) {
         $this->id = $id;
         $this->titulo = $titulo;
@@ -61,5 +62,10 @@ class Filme
         return $this->atores->map(function (Ator $ator) {
             return $ator->getNome();
         })->toArray();
+    }
+
+    public function getClassificacao(): string
+    {
+        return $this->classificacao->getKey();
     }
 }

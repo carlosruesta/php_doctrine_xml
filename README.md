@@ -112,4 +112,13 @@
               </options>
           </field>
           
-+ 
++ Inclusão do uso de Enum
+    + O PHP não suporta Enums por padrão. Para ter acesso a esta funcionalidade, precisamos recorrer a componentes externos.
+    + Inclusão de uma lib externa: **myclabs/php-enum**.
+    + Seu funcionamento se dá através do método mágico __callStatic, que permite que, ao chamar um método estático não existente, alguma ação seja tomada. 
+    + Com isso, conseguimos acessar ClassificacaoEnum::LIVRE(), por exemplo.
++ Para funcionamento do ENUM precisamos alterar:
+    + Criar o Enum: ClassificacaoEnum.php
+    + A classe filme obrigar a receber no construtor o tipo ClassificacaoEnum
+    + Na definição do TipoClassificacao foi tratado para o Doctrine ao momento de mapear já entregar e ler um Enum;
+       
