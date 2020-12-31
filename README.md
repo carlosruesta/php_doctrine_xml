@@ -131,3 +131,17 @@
     + Alteramos o mapeamento da classe filha Ator
     + Adicionamos a classe Cliente filha da classe Pessoa
     + Alteramos a classe Ator para ser filha da classe Pessoa
+    
++ Mais sobre mapeamento de herança: [https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/inheritance-mapping.html]
+    + Tipos de herança mapeados pelo Doctrine:
+        + Mapped Superclasses: cada tabela corresponde a uma classe
+        + Single Table Inheritance: uma tabelona com todas as classes filhas e atributos de cada uma dentro (muitos campos null)
+        + Class Table Inheritance: Todas as classes são mapeadas em tabelas. Tanto a superclasse e como as classes filhas;
+    + Ainda é possível mapear algumas considerações próprias da herança. Tais como:
+        + A sobreescrita de relacionamentos e 
+        + Sobreescrita de atributos
+        
+### Aula 04 - Queries Nativas, uso de Views e mapeamento dos resultados (arrays e entidades)
+
++ ResultSetMapping permite o mapeamento do resultado de uma query nativa em arrays ou entidades
++ createNativeQuery permite a criação de queries nativas e jogando o resultado em algum mapeamento

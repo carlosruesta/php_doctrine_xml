@@ -1,5 +1,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
-	<entity name="Alura\Doctrine\Entity\Ator" table="ator">
+	<entity
+		name="Alura\Doctrine\Entity\Ator"
+		table="ator"
+		repository-class="Alura\Doctrine\Repository\AtorRepository">
 		<indexes>
 			<index columns="ultimo_nome" name="idx_ultimo_nome"/>
 		</indexes>
